@@ -24,10 +24,16 @@ userform.addEventListener("input", throttle((event) => {
     localStorage.setItem("feedback-form-state-message", userMessage.value);    
 }, 500));
 
+const feedbackFormState = {
+    email: "",
+    message: "",
+};
+
 userform.addEventListener("submit", (event) => {
     event.preventDefault();
-    console.log(localStorage.getItem("feedback-form-state-email"));
-    console.log(localStorage.getItem("feedback-form-state-message"));
+    feedbackFormState.email = localStorage.getItem("feedback-form-state-email");
+    feedbackFormState.message = localStorage.getItem("feedback-form-state-message")
+    console.log(feedbackFormState);
     userEmail.value = "";
     userMessage.value = "";
     localStorage.removeItem("feedback-form-state-email");
